@@ -11,6 +11,11 @@ load_dotenv()
 
 app = Flask(__name__)
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+INSTANCE_DIR = os.path.join(BASE_DIR, "instance")
+
+if not os.path.exists(INSTANCE_DIR):
+    os.makedirs(INSTANCE_DIR)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(BASE_DIR, 'instance', 'healthbot.db')
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
